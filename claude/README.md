@@ -19,7 +19,7 @@ The CLAUDE.md file is a custom instruction set that configures Claude's operatio
 
 2. **Set up automatic date updates:**
    ```bash
-   ./install-cron.sh
+   ./scripts/install-cron.sh
    ```
 
 3. **Verify installation:**
@@ -221,18 +221,18 @@ This repository includes ready-to-use scripts for automatic date updates:
 
 | Script | Purpose | Usage |
 |--------|---------|--------|
-| `update-claude-date.sh` | Updates the date in CLAUDE.md | Run manually or via cron |
-| `install-cron.sh` | Interactive installer for cron job | `./install-cron.sh` |
+| `scripts/update-claude-date.sh` | Updates the date in CLAUDE.md | Run manually or via cron |
+| `scripts/install-cron.sh` | Interactive installer for cron job | `./scripts/install-cron.sh` |
 | `scripts/deploy-claude-config.sh` | Deploy CLAUDE.md with backup | `./scripts/deploy-claude-config.sh` |
 
 ### Quick Setup
 
 ```bash
 # Interactive setup (recommended)
-./install-cron.sh
+./scripts/install-cron.sh
 
 # Manual installation
-cp update-claude-date.sh ~/bin/
+cp scripts/update-claude-date.sh ~/bin/
 chmod +x ~/bin/update-claude-date.sh
 crontab -e  # Add: 0 0 * * * ~/bin/update-claude-date.sh
 ```
@@ -259,8 +259,8 @@ The cron job will automatically update the date every day at midnight.
 | Script | Location | Purpose |
 |--------|----------|---------|
 | `deploy-claude-config.sh` | `scripts/` | Deploy CLAUDE.md with automatic backup |
-| `update-claude-date.sh` | Root | Update date field in CLAUDE.md |
-| `install-cron.sh` | Root | Set up automatic daily updates |
+| `update-claude-date.sh` | `scripts/` | Update date field in CLAUDE.md |
+| `install-cron.sh` | `scripts/` | Set up automatic daily updates |
 
 For detailed usage, see the scripts themselves or run with `--help`.
 

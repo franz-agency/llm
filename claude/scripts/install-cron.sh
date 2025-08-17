@@ -33,7 +33,7 @@ case $choice in
         mkdir -p ~/bin
         
         # Copy update script
-        cp update-claude-date.sh ~/bin/
+        cp "$(dirname "$0")/update-claude-date.sh" ~/bin/
         chmod +x ~/bin/update-claude-date.sh
         
         # Add to crontab
