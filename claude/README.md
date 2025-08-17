@@ -10,6 +10,23 @@ This configuration approach was inspired by the community discussion: [What's in
 
 The CLAUDE.md file is a custom instruction set that configures Claude's operational parameters, ensuring consistent behavior across all development tasks. This file should be placed in `~/.claude/CLAUDE.md` for global application.
 
+### Quick Start
+
+1. **Deploy the configuration:**
+   ```bash
+   ./scripts/deploy-claude-config.sh
+   ```
+
+2. **Set up automatic date updates:**
+   ```bash
+   ./install-cron.sh
+   ```
+
+3. **Verify installation:**
+   ```bash
+   cat ~/.claude/CLAUDE.md
+   ```
+
 ## Configuration Directives
 
 ### Core Settings (REQUIRED)
@@ -196,62 +213,31 @@ The `Delivery` directive ("Provide the complete answer now") is **fully compatib
 
 ## Daily Maintenance
 
-The `Current date` field MUST be updated daily. You can automate this with the scripts below.
+The `Current date` field MUST be updated daily for accurate temporal context.
 
-### Auto-Update Scripts
+### Automation Scripts
 
-#### Option 1: Shell Script with Cron
+This repository includes ready-to-use scripts for automatic date updates:
 
-Create a script to update the date automatically:
+| Script | Purpose | Usage |
+|--------|---------|--------|
+| `update-claude-date.sh` | Updates the date in CLAUDE.md | Run manually or via cron |
+| `install-cron.sh` | Interactive installer for cron job | `./install-cron.sh` |
+| `scripts/deploy-claude-config.sh` | Deploy CLAUDE.md with backup | `./scripts/deploy-claude-config.sh` |
 
-```bash
-#!/bin/bash
-# Save as ~/bin/update-claude-date.sh and chmod +x
-
-FILE="$HOME/.claude/CLAUDE.md"
-DATE="- **Current date**: $(date +%Y-%m-%d)"
-
-# Update the first line containing "Current date"
-sed -i.bak "/\*\*Current date\*\*/c\\
-$DATE" "$FILE"
-```
-
-Then add it to your crontab:
+### Quick Setup
 
 ```bash
-# Run 'crontab -e' and add:
-0 0 * * * ~/bin/update-claude-date.sh
-```
-
-#### Option 2: One-liner Cron Entry
-
-For a more direct approach, add this single line to your crontab:
-
-```bash
-# Run 'crontab -e' and add:
-0 0 * * * sed -i.bak 's/\*\*Current date\*\*: [0-9-]*/\*\*Current date\*\*: '$(date +%Y-%m-%d)'/' ~/.claude/CLAUDE.md
-```
-
-This will automatically update the date in your CLAUDE.md file every day at midnight.
-
-### Using the Provided Scripts
-
-This repository includes ready-to-use scripts:
-
-- **`update-claude-date.sh`**: The update script that modifies the date in CLAUDE.md
-- **`install-cron.sh`**: Interactive installer that sets up the cron job for you
-
-To use them:
-
-```bash
-# Run the installer
+# Interactive setup (recommended)
 ./install-cron.sh
 
-# Or manually install the update script
+# Manual installation
 cp update-claude-date.sh ~/bin/
 chmod +x ~/bin/update-claude-date.sh
-crontab -e  # Then add: 0 0 * * * ~/bin/update-claude-date.sh
+crontab -e  # Add: 0 0 * * * ~/bin/update-claude-date.sh
 ```
+
+The cron job will automatically update the date every day at midnight.
 
 ## Customization Guidelines
 
@@ -260,10 +246,23 @@ crontab -e  # Then add: 0 0 * * * ~/bin/update-claude-date.sh
 3. **Additional directives** can be added following the same format
 4. **Test changes** in a project-specific `.claude/CLAUDE.md` before applying globally
 
-## File Location
+## File Locations
 
-- **Global**: `~/.claude/CLAUDE.md` (applies to all projects)
-- **Project-specific**: `.claude/CLAUDE.md` (overrides global for that project)
+| Location | Path | Scope | Priority |
+|----------|------|-------|----------|
+| Global | `~/.claude/CLAUDE.md` | All projects | Base |
+| Project | `.claude/CLAUDE.md` | Current project | Override |
+| Repository | `claude/CLAUDE.md` | This repo (template) | Source |
+
+## Available Scripts
+
+| Script | Location | Purpose |
+|--------|----------|---------|
+| `deploy-claude-config.sh` | `scripts/` | Deploy CLAUDE.md with automatic backup |
+| `update-claude-date.sh` | Root | Update date field in CLAUDE.md |
+| `install-cron.sh` | Root | Set up automatic daily updates |
+
+For detailed usage, see the scripts themselves or run with `--help`.
 
 ## License
 
