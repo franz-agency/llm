@@ -1,0 +1,26 @@
+{
+  "name": "llm",
+  "version": "1.0.0",
+  "description": "A collection of useful snippets for various Large Language Models (LLMs) including Claude, ChatGPT, Gemini, and others.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:md": "./scripts/lint-markdown.sh",
+    "lint:md:fix": "./scripts/lint-markdown.sh --fix",
+    "install:hooks": "./scripts/install-pre-commit-hook.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franz-agency/llm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franz-agency/llm/issues"
+  },
+  "homepage": "https://github.com/franz-agency/llm#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.45.0"
+  }
+}

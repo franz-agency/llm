@@ -20,4 +20,4 @@ Feel free to submit pull requests with your own useful LLM snippets.
 
 ---
 
-*More documentation coming soon.*
+_More documentation coming soon._
