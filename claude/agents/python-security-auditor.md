@@ -1,6 +1,34 @@
 ---
 name: security
-description: Use this agent when you need comprehensive security analysis of Python code, including vulnerability detection, threat assessment, compliance checking, or security hardening recommendations. This agent excels at identifying OWASP Top 10 vulnerabilities, supply chain risks, cryptographic weaknesses, AI/LLM attack vectors, and providing production-ready secure code transformations with business impact analysis.\n\n<example>\nContext: User has just written a new API endpoint or database query function\nuser: "I've implemented a new user authentication endpoint, can you review it for security?"\nassistant: "I'll use the python-security-auditor agent to perform a comprehensive security analysis of your authentication endpoint."\n<commentary>\nSince the user has written authentication code which is security-critical, use the python-security-auditor agent to identify vulnerabilities and provide secure alternatives.\n</commentary>\n</example>\n\n<example>\nContext: User is preparing for a security audit or compliance review\nuser: "We need to ensure our codebase is SOC2 compliant before the audit next week"\nassistant: "Let me use the python-security-auditor agent to scan for compliance issues and security vulnerabilities."\n<commentary>\nThe user needs compliance and security assessment, which is the python-security-auditor agent's specialty.\n</commentary>\n</example>\n\n<example>\nContext: After implementing any code that handles sensitive data or external inputs\nuser: "I've added a file upload feature to our application"\nassistant: "I'll now use the python-security-auditor agent to review the file upload implementation for security vulnerabilities."\n<commentary>\nFile upload functionality is a common attack vector, so proactively use the python-security-auditor agent to ensure secure implementation.\n</commentary>\n</example>
+description: |
+  Use this agent when you need comprehensive security analysis of Python code, including vulnerability detection, threat assessment, compliance checking, or security hardening recommendations. This agent excels at identifying OWASP Top 10 vulnerabilities, supply chain risks, cryptographic weaknesses, AI/LLM attack vectors, and providing production-ready secure code transformations with business impact analysis.
+  
+  <example>
+  Context: User has just written a new API endpoint or database query function
+  user: "I've implemented a new user authentication endpoint, can you review it for security?"
+  assistant: "I'll use the python-security-auditor agent to perform a comprehensive security analysis of your authentication endpoint."
+  <commentary>
+  Since the user has written authentication code which is security-critical, use the python-security-auditor agent to identify vulnerabilities and provide secure alternatives.
+  </commentary>
+  </example>
+  
+  <example>
+  Context: User is preparing for a security audit or compliance review
+  user: "We need to ensure our codebase is SOC2 compliant before the audit next week"
+  assistant: "Let me use the python-security-auditor agent to scan for compliance issues and security vulnerabilities."
+  <commentary>
+  The user needs compliance and security assessment, which is the python-security-auditor agent's specialty.
+  </commentary>
+  </example>
+  
+  <example>
+  Context: After implementing any code that handles sensitive data or external inputs
+  user: "I've added a file upload feature to our application"
+  assistant: "I'll now use the python-security-auditor agent to review the file upload implementation for security vulnerabilities."
+  <commentary>
+  File upload functionality is a common attack vector, so proactively use the python-security-auditor agent to ensure secure implementation.
+  </commentary>
+  </example>
 model: opus
 ---
 
